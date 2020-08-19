@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(
             [
                 MessageTableSeeder::class,
-                ReplyTableSeeder::class,
+                RepliesTableSeeder::class,
             ]
         );
     }

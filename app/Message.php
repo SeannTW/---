@@ -17,7 +17,7 @@ class Message extends Model
 
     /**
      * Message表、Reply表 建立關聯。
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function replys()
