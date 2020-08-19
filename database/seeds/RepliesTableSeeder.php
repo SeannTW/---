@@ -21,8 +21,6 @@ class RepliesTableSeeder extends Seeder
         $cloudyMessagesId = Message::where('title', '陰天')->get('id');
         $rainMessagesId = Message::where('title', '雨天')->get('id');
 
-        $name = ['Aelx', 'Paul', 'Ella'];
-
         // 判斷標題內容為何種天氣
         if ($sunnyDay) {
             $a = [
@@ -45,11 +43,12 @@ class RepliesTableSeeder extends Seeder
             ];
         }
 
-        $e = [$a, $b, $c];
-        $result = collect($e);
+        $name = ['Aelx', 'Paul', 'Ella'];
+        $param = [$a, $b, $c];
+        $content = collect($param);
 
         for ($i = 0; $i < 3; $i ++) {
-            $newContent = $result->random();
+            $newContent = $content->random();
             $newName = $name[rand(0, 2)];
 
             $dateParam= rand(1596211200, 1598889599);
