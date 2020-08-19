@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddMessageIdToReplysTable extends Migration
+class AddMessageIdToRepliesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddMessageIdToReplysTable extends Migration
      */
     public function up()
     {
-        Schema::table('replys', function (Blueprint $table) {
+        Schema::table('replies', function (Blueprint $table) {
             $table->bigInteger('message_id')->after('content');
         });
     }
@@ -25,7 +25,7 @@ class AddMessageIdToReplysTable extends Migration
      */
     public function down()
     {
-        Schema::table('replys', function (Blueprint $table) {
+        Schema::table('replies', function (Blueprint $table) {
             $table->dropColumn('message_id');
         });
     }
