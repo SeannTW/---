@@ -1,19 +1,32 @@
-<form action="{{ route('messages.update', ['message' => $message]) }}" method="POST">
-    @method('PUT')
-    @csrf
-    <label>姓名：
-        <textarea name="name">{{ $message->name }}</textarea>
-    </label><br>
-    <label>標題：
-        <textarea name="title">{{ $message->title }}</textarea>
-    </label><br>
-    <label>內容：
-        <textarea name="content">{{ $message->content }}</textarea>
-    </label><br>
-    <input type="submit" value="送出文章">
-</form>
-<form action="{{ route('messages'.destroy') }}" method="POST">
-    @method('DELETE')
-    @csrf
-    <input type="submit" value="刪除文章">
-</form>
+@extends('layouts.master')
+
+@section('title', 'Message Board')
+
+@section('content')
+<div class="container">
+  <div class="justify-content-center" style="width:500px;">
+    <div class="card my-5">
+      <h5 class="card-header">Edit Content:</h5>
+      <div class="card-body">
+        <form action="{{ route('messages.update', ['message' => $message]) }}" method="POST">
+          @method('PUT')
+          @csrf
+          <div class="form-group">
+            <input type="textarea" name="content" class="form-control" rows="3" value={{ $message->content }}>
+          </div>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+    </div>
+    <tr>
+      <div class="media mb-4">
+        <div class="media-body">
+          <h5 class="mt-0">{{ $message->name }}</h5>
+          <p>{{ $message->content }}</p>
+          <br/>
+        </div>
+      </div>
+    </tr>
+  </div>
+</div>
+@stop
