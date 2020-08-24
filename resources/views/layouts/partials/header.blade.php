@@ -5,6 +5,4 @@
 
 <title>@yield('title')</title>
 
-<link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-
-<link href="{{ asset('css/blog-post.css') }}" rel="stylesheet">
+<link href="{{ asset('vender/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">

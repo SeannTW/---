@@ -12,9 +12,13 @@
           @method('PUT')
           @csrf
           <div class="form-group">
-            <input type="textarea" name="content" class="form-control" rows="3" value={{ $message->content }}>
+            <h5 class="mt-0">{{ $message->name }}</h5>
+              <input type="textarea" name="content" class="form-control" rows="3" value={{ $message->content }}>
           </div>
-          <button type="submit" class="btn btn-primary">Update</button>
+          <button type="submit" class="btn btn-info btn-sm">Update</button>
+          <br/>
+          <br/>
+          <a href="/messages" class="btn btn-primary btn-sm">Back</a>
         </form>
       </div>
     </div>
