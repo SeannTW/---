@@ -13,13 +13,13 @@ class RepliesTableSeeder extends Seeder
      */
     public function run()
     {
-        $sunnyDay = Message::where('contene', '晴天')->get('tconteneitle');
-        $cloudyDay = Message::where('contene', '陰天')->get('contene');
-        $rainyDay = Message::where('contene', '雨天')->get('contene');
+        $sunnyDay = Message::where('content', '大晴天今日天氣真好!')->get('content');
+        $cloudyDay = Message::where('content', '天氣不穩定')->get('content');
+        $rainyDay = Message::where('content', '還好我有帶著雨傘')->get('content');
 
-        $sunMessagesId = Message::where('contene', '晴天')->get('id');
-        $cloudyMessagesId = Message::where('contene', '陰天')->get('id');
-        $rainMessagesId = Message::where('contene', '雨天')->get('id');
+        $sunMessagesId = Message::where('content', '大晴天今日天氣真好!')->get('id');
+        $cloudyMessagesId = Message::where('content', '天氣不穩定')->get('id');
+        $rainMessagesId = Message::where('content', '還好我有帶著雨傘')->get('id');
 
         // 判斷標題內容為何種天氣
         if ($sunnyDay) {
