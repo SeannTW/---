@@ -19,47 +19,25 @@ class MessageController extends Controller
     }
 
     /**
-     * 新增留言頁面
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('messages.create');
-    }
-
-    /**
      * 新增留言內容
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $message = new Message;
         $message->name = $request->input('name');
-        $message->title = $request->input('title');
         $message->content = $request->input('content');
         $message->save();
 
-        return redirect(route('posts.index'));
-    }
-
-    /**
-     * 顯示單筆留言
-     *
-     * @param  \App\Message  $message
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Message $message)
-    {
-        return view('messages.show', ['message' => $message]);
+        return redirect(route('messages.index'));
     }
 
     /**
      * 編輯單筆留言
      *
-     * @param  \App\Message  $message
+     * @param  \App\Message
      * @return \Illuminate\Http\Response
      */
     public function edit(Message $message)
@@ -70,24 +48,22 @@ class MessageController extends Controller
     /**
      * 更新單筆留言
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Message  $message
+     * @param  \Illuminate\Http\Request
+     * @param  \App\Message
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Message $message)
     {
-        $message->name = $request->input('name');
-        $message->title = $request->input('title');
         $message->content = $request->input('content');
         $message->save();
 
-        return redirect(route('messages.show', ['message' => $message]));
+        return redirect(route('messages.index'));
     }
 
     /**
      * 刪除單筆留言
      *
-     * @param  \App\Message  $message
+     * @param  \App\Message
      * @return \Illuminate\Http\Response
      */
     public function destroy(Message $message)
