@@ -26,7 +26,14 @@
         <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
           <div class="media-body">
             <h5 class="mt-0">{{ $message->name }}</h5>
-                <a href="messages/{{ $message->id }}/edit" class="btn btn-info btn-sm" class="justify-content-end" style="float:right;">Edit</a>
+              <form action="/messages/{{ $message->id }}" method="POST">
+                @method('DELETE')
+                @csrf
+                <button type="submit" class="btn btn-danger btn-sm" style="float:right;">Delete</button>
+              </form>
+              <a href="messages/{{ $message->id }}/edit" class="btn btn-info btn-sm" class="justify-content-end" style="float:right;">Edit</a>
+
+
                 <p>{{ $message->content }}</p>
               <br/>
           </div>

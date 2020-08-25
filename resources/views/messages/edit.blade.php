@@ -6,7 +6,7 @@
 <div class="container">
   <div class="justify-content-center" style="width:500px;">
     <div class="card my-5">
-      <h5 class="card-header">Edit Content:</h5>
+      <h5 class="card-header">Edit message content:</h5>
       <div class="card-body">
         <form action="{{ route('messages.update', ['message' => $message]) }}" method="POST">
           @method('PUT')
@@ -24,11 +24,12 @@
     </div>
     <tr>
       <div class="media mb-4">
-        <div class="media-body">
-          <h5 class="mt-0">{{ $message->name }}</h5>
-          <p>{{ $message->content }}</p>
-          <br/>
-        </div>
+        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+          <div class="media-body">
+            <h5 class="mt-0">{{ $message->name }}</h5>
+            <p>{{ $message->content }}</p>
+            <br/>
+          </div>
       </div>
     </tr>
   </div>
