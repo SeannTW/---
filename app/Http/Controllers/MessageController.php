@@ -40,8 +40,9 @@ class MessageController extends Controller
      * @param  \App\Message
      * @return \Illuminate\Http\Response
      */
-    public function edit(Message $message)
+    public function edit($id)
     {
+        $message = Message::find($id);
         return view('messages.edit', ['message' => $message]);
     }
 
@@ -52,8 +53,9 @@ class MessageController extends Controller
      * @param  \App\Message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Message $message)
+    public function update(Request $request)
     {
+        $message = Message::find($request->input('id'));
         $message->content = $request->input('content');
         $message->save();
 
@@ -66,8 +68,10 @@ class MessageController extends Controller
      * @param  \App\Message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Message $message)
+    public function destroy(Request $request)
     {
+        $id = $request->id;
+        $message = Message::find($id);
         $message->delete();
 
         return redirect(route('messages.index'));

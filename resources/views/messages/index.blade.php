@@ -30,14 +30,14 @@
               </div>
               <h5 class="mt-0">{{ $message->name }}</h5>
               </br>
-              <form action="/messages/{{ $message->id }}" method="POST">
+              <form action="{{ route('messages.destroy', $message->id) }}" method="POST">
                 @method('DELETE')
                 @csrf
-                <button type="submit" class="btn btn-danger btn-sm" style="float:right;">Delete</button>
+                <button type="submit" class="btn btn-danger btn-sm" style="float:right; ">Delete</button>
               </form>
-              <a href="messages/{{ $message->id }}/edit" class="btn btn-info btn-sm" style="float:right;">Edit</a>
-              <p>{{ $message->content }}</p>
-              <br/>
+                <a href="messages/{{ $message->id }}/edit" class="btn btn-info btn-sm" style="float:right;">Edit</a>
+                <p>{{ $message->content }}</p>
+                <br/>
             </div>
         </div>
       </tr>

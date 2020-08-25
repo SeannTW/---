@@ -8,12 +8,13 @@
     <div class="card my-5">
       <h5 class="card-header">Edit message</h5>
       <div class="card-body">
-        <form action="{{ route('messages.update', ['message' => $message]) }}" method="POST">
+        <form action="{{ route('messages.update') }}" method="POST">
           @method('PUT')
           @csrf
           <div class="form-group">
+            <input hidden type="text" name="id" class="form-control" value={{ $message->id }}>
             <h5 class="mt-0">{{ $message->name }}</h5>
-              <input type="textarea" name="content" class="form-control" rows="3" value={{ $message->content }}>
+            <input type="textarea" name="content" class="form-control" rows="3" value={{ $message->content }}>
           </div>
           <button type="submit" class="btn btn-info btn-sm">Update</button>
           <br/>
