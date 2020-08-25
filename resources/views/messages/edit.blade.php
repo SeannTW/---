@@ -6,7 +6,7 @@
 <div class="container">
   <div class="justify-content-center" style="width:500px;">
     <div class="card my-5">
-      <h5 class="card-header">Edit message content:</h5>
+      <h5 class="card-header">Edit message</h5>
       <div class="card-body">
         <form action="{{ route('messages.update', ['message' => $message]) }}" method="POST">
           @method('PUT')
