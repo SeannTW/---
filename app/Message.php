@@ -22,6 +22,6 @@ class Message extends Model
      */
     public function replys()
     {
-        return $this->hasMany(Reply::class);
+        return $this->hasMany(Reply::class, 'message_id');
     }
 }
