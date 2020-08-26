@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -86,7 +87,7 @@ class MessageController extends Controller
     }
 
     /**
-     * 刪除單筆留言
+     * 刪除單筆留言 & 如有回覆一併刪除
      *
      * @param  \App\Message
      * @return \Illuminate\Http\Response
@@ -98,6 +99,8 @@ class MessageController extends Controller
         if (!$deleteMessage) {
             return new Response('Not found message');
         }
+
+        DB::table('replies')->where('message_id', $request->id)->delete();
 
         $deleteMessage->delete();
 
