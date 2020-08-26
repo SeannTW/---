@@ -16,12 +16,12 @@ class Message extends Model
     ];
 
     /**
-     * Message表、Reply表 建立關聯。
+     * Message表、Replies表 建立關聯。
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function replys()
     {
-        return $this->hasMany(Reply::class, 'message_id');
+        return $this->hasMany(Replies::class, 'message_id');
     }
 }

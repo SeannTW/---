@@ -26,16 +26,16 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        $message = new Message;
-        $message->name = $request->input('name');
-        $message->content = $request->input('content');
-        $message->save();
+        $newMessage = new Message;
+        $newMessage->name = $request->input('name');
+        $newMessage->content = $request->input('content');
+        $newMessage->save();
 
         return redirect(route('messages.index'));
     }
 
     /**
-     * 編輯單筆留言
+     * 編輯單筆留言頁面
      *
      * @param  \App\Message
      * @return \Illuminate\Http\Response
@@ -47,7 +47,7 @@ class MessageController extends Controller
     }
 
     /**
-     * 更新單筆留言
+     * 更新單筆留言內容
      *
      * @param  \Illuminate\Http\Request
      * @param  \App\Message
@@ -55,9 +55,9 @@ class MessageController extends Controller
      */
     public function update(Request $request)
     {
-        $message = Message::find($request->input('id'));
-        $message->content = $request->input('content');
-        $message->save();
+        $updateMessage = Message::find($request->input('id'));
+        $updateMessage->content = $request->input('content');
+        $updateMessage->save();
 
         return redirect(route('messages.index'));
     }
@@ -71,8 +71,8 @@ class MessageController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->id;
-        $message = Message::find($id);
-        $message->delete();
+        $deleteMessage = Message::find($id);
+        $deleteMessage->delete();
 
         return redirect(route('messages.index'));
     }
