@@ -23,7 +23,7 @@ class RepliesController extends Controller
             return new Response('Not found message');
         }
 
-        $replies = DB::table('replies')->where('message_id', $id)->get();
+        $replies = DB::table('replies')->where('message_id', $id)->where('deleted_at', null)->get();
         $totalReplies = count($replies);
 
         return view('replies.index', ['replies' => $replies, 'message' => $message, 'total' => $totalReplies]);

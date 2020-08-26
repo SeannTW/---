@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class replies extends Model
 {
+    use SoftDeletes;
+
     /**
      * 資料表可輸入的屬性。
      *
