@@ -39,6 +39,7 @@ class MessageController extends Controller
         $newMessage = new Message;
         $newMessage->name = $request->input('name');
         $newMessage->content = $request->input('content');
+        $newMessage->updated_at = null;
         $newMessage->save();
 
         return redirect(route('messages.index'));

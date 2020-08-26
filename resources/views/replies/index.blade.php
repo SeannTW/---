@@ -15,12 +15,14 @@
               <h2 class="mt-0">{{ $message->name }}</h2>
               <p>{{ $message->content }}</p>
             </div>
-            <h7>{{ $message->created_at }}</h7>
           </div>
+          <br/>
+          <br/>
+          <h7 style="float:right;">{{ $message->created_at }}</h7>
+          <br/>
+          <br/>
         </tr>
-        <br/>
-        <br/>
-        <br/>
+
         <h5 class="card-footer">Replies:</h5>
         <form action="{{ route('replies.store', ['id' => $message->id]) }}" method="POST">
           @csrf
@@ -37,6 +39,11 @@
         </form>
         <br/>
         <br/>
+        @if ($total)
+          <font size="3">
+            <a>{{ $total }}則回覆</a>
+          </font>
+        @endif
         <a href="/messages" class="btn btn-warning btn-sm" style="float:right;">Go Back</a>
         <br/>
         <br/>
@@ -59,10 +66,10 @@
                   </font>
                   <h2 class="mt-0" style="word-break: break-all;">{{ $replies->name }}</h2>
                   <p style="word-break: break-all;">{{ $replies->content }}</p>
-                  <h7>{{ $replies->created_at }}</h7>
+                  <h7 style="float:right;">{{ $replies->created_at }}</h7>
                 </div>
                 <br/>
-                <br/>
+                <hr>
               </div>
             </div>
           </tr>

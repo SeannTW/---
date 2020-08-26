@@ -24,8 +24,9 @@ class RepliesController extends Controller
         }
 
         $replies = DB::table('replies')->where('message_id', $id)->get();
+        $totalReplies = count($replies);
 
-        return view('replies.index', ['replies' => $replies, 'message' => $message]);
+        return view('replies.index', ['replies' => $replies, 'message' => $message, 'total' => $totalReplies]);
     }
 
     /**
@@ -48,6 +49,7 @@ class RepliesController extends Controller
         $newReplies->name = $request->input('name');
         $newReplies->content = $request->input('content');
         $newReplies->message_id = $request->input('messageId');
+        $newReplies->updated_at = null;
         $newReplies->save();
 
         return redirect()->back();
