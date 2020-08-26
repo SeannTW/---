@@ -13,26 +13,16 @@
           @csrf
           <div class="form-group">
             <input hidden type="text" name="id" class="form-control" value={{ $message->id }}>
-            <h5 class="mt-0">{{ $message->name }}</h5>
-            <input type="textarea" name="content" class="form-control" rows="3" value={{ $message->content }}>
+            <h2 class="mt-0" style="word-break: break-all;">{{ $message->name }}</h2>
+            <input type="textarea" name="content" class="form-control" rows="3" style="word-break: break-all;" value={{ $message->content }}>
           </div>
-          <button type="submit" class="btn btn-info btn-sm">Update</button>
+          <button style="float:right;" type="submit" class="btn btn-info btn-sm">Update</button>
           <br/>
           <br/>
-          <a href="/messages" class="btn btn-primary btn-sm">Back</a>
+          <a style="float:right;" href="/messages" class="btn btn-primary btn-sm">Back</a>
         </form>
       </div>
     </div>
-    <tr>
-      <div class="media mb-4">
-        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">{{ $message->name }}</h5>
-            <p>{{ $message->content }}</p>
-            <br/>
-          </div>
-      </div>
-    </tr>
   </div>
 </div>
 @stop

@@ -9,15 +9,16 @@
       <h5 class="card-header">Message:</h5>
       <div class="card-body">
         <tr>
-          <div class="media mb-4">
+          <div class="media mb-1">
             <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
             <div class="media-body">
-              <h5 class="mt-0">{{ $message->name }}</h5>
+              <h2 class="mt-0">{{ $message->name }}</h2>
               <p>{{ $message->content }}</p>
-              <br/>
             </div>
+            <h7>{{ $message->created_at }}</h7>
           </div>
         </tr>
+        <br/>
         <br/>
         <br/>
         <h5 class="card-footer">Replies:</h5>
@@ -50,8 +51,17 @@
                   @csrf
                   <button type="submit" style="float:right;">Edit</button>
                 </form>
-                <h5 class="mt-0">{{ $replies->name }}</h5>
-                <p>{{ $replies->content }}</p>
+                <div>
+                  <font size="1">
+                    @if ($replies->updated_at)
+                      <a>已編輯</a>
+                    @endif
+                  </font>
+                  <h2 class="mt-0" style="word-break: break-all;">{{ $replies->name }}</h2>
+                  <p style="word-break: break-all;">{{ $replies->content }}</p>
+                  <h7>{{ $replies->created_at }}</h7>
+                </div>
+                <br/>
                 <br/>
               </div>
             </div>

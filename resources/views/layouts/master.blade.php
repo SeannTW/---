@@ -3,7 +3,7 @@
   <head>
     @include('layouts.partials.header')
   </head>
-  <body>
+  <body bgcolor="#cccccc">
     @yield('content')
     @include('layouts.partials.footer')
   </body>

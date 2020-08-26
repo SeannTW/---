@@ -12,8 +12,8 @@
           <div class="media mb-4">
             <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
             <div class="media-body">
-              <h5 class="mt-0">{{ $message->name }}</h5>
-              <p>{{ $message->content }}</p>
+              <h2 class="mt-0" style="word-break: break-all;">{{ $message->name }}</h2>
+              <p style="word-break: break-all;">{{ $message->content }}</p>
               <br/>
             </div>
           </div>
@@ -26,8 +26,8 @@
         <div class="media mb-4">
           <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
           <div class="media-body">
-            <h5 class="mt-0">{{ $replies->name }}</h5>
-            <p>{{ $replies->content }}</p>
+            <h2 class="mt-0" style="word-break: break-all;">{{ $replies->name }}</h2>
+            <p style="word-break: break-all;">{{ $replies->content }}</p>
             <br/>
           </div>
         </div>
