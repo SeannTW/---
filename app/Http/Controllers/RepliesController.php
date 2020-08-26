@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use DB;
 use App\Replies;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class RepliesController extends Controller
 {
     /**
-     * 顯示該留言的回覆頁面
+     * 顯示該留言的全部回覆內容
      *
      * @param  \App\Replies
      * @return \Illuminate\Http\Response
@@ -17,6 +18,11 @@ class RepliesController extends Controller
     public function index($id)
     {
         $message = DB::table('messages')->find($id);
+
+        if (!$message) {
+            return new Response('Not found message');
+        }
+
         $replies = DB::table('replies')->where('message_id', $id)->get();
 
         return view('replies.index', ['replies' => $replies, 'message' => $message]);
@@ -30,6 +36,14 @@ class RepliesController extends Controller
      */
     public function store(Request $request)
     {
+        if (trim($request->name) == '') {
+            return new Response('No enter name');
+        }
+
+        if (trim($request->content) == '') {
+            return new Response('No enter content');
+        }
+
         $newReplies = new Replies;
         $newReplies->name = $request->input('name');
         $newReplies->content = $request->input('content');
@@ -48,11 +62,20 @@ class RepliesController extends Controller
     public function edit($replies)
     {
         $editReplies = DB::table('replies')
-                    ->where('id', $replies)
-                    ->get()
-                    ->toArray();
+                            ->where('id', $replies)
+                            ->get()
+                            ->toArray();
+
+        if (!$editReplies) {
+            return new Response('Not found replies');
+        }
+
         $resultResult = $editReplies['0'];
         $resultMessage = DB::table('messages')->find($resultResult->message_id);
+
+        if (!$resultMessage) {
+            return new Response('Not found message');
+        }
 
         return view('replies.edit', ['replies' => $resultResult, 'message' => $resultMessage]);
     }
@@ -66,7 +89,17 @@ class RepliesController extends Controller
      */
     public function update(Request $request)
     {
+
+        if (trim($request->content) == '') {
+            return new Response('No enter content');
+        }
+
         $updateReplies = Replies::find($request->id);
+
+        if (!$updateReplies) {
+            return new Response('Not found replies');
+        }
+
         $updateReplies->content = $request->input('content');
         $updateReplies->save();
 
@@ -82,6 +115,11 @@ class RepliesController extends Controller
     public function destroy(Request $request)
     {
         $deleteReplies = Replies::find($request->id);
+
+        if (!$deleteReplies) {
+            return new Response('Not found replies');
+        }
+
         $deleteReplies->delete();
 
         return redirect(route('replies.index', ['id' => $deleteReplies->message_id]));
