@@ -34,7 +34,7 @@ class RepliesController extends Controller
     public function store(Request $request)
     {
         $replies = new Replies;
-        $id = $request->input('id');
+        //$id = $request->input('id');
         $replies->name = $request->input('name');
         $replies->content = $request->input('content');
         $replies->message_id = $request->input('messageId');
@@ -70,9 +70,15 @@ class RepliesController extends Controller
      * @param  \App\Replies  $replies
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Replies $replies)
+    public function update(Request $request)
     {
-        //
+        $replies = Replies::find($request->id);
+        // dd($replies);
+        $replies->content = $request->input('content');
+        $replies->save();
+
+        // return redirect()->back();
+        return redirect(route('replies.index', ['id' => $replies->message_id]));
     }
 
     /**
@@ -81,8 +87,11 @@ class RepliesController extends Controller
      * @param  \App\Replies  $replies
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Replies $replies)
+    public function destroy(Request $request)
     {
-        //
+        $deleteReplies = Replies::find($request->id);
+        $deleteReplies->delete();
+
+        return redirect(route('replies.index', ['id' => $deleteReplies->message_id]));
     }
 }

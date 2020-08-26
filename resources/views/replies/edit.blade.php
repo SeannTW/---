@@ -37,16 +37,22 @@
             <div class="form-group">
               <input hidden type="text" name="id" class="form-control" value={{ $replies->id }}>
               <input type="textarea" name="content" class="form-control" rows="3" value={{ $replies->content }}>
-              </div>
+              <br>
               <button type="submit" class="btn btn-info btn-sm">Update</button>
             </div>
           </form>
-            <form action="{{ route('replies.index', ['id' => $replies->id, 'message' => $message]) }}" method="POST">
-              @method('GET')
-              @csrf
-              <button type="submit" class="btn btn-primary btn-sm">Back</button>
-            </form>
-
+          <form action="/replies/{{ $replies->id }}" method="POST">
+            @method('DELETE')
+            @csrf
+            <div class="form-group" style="float:right;">
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </div>
+          </form>
+          <form action="/replies/{{ $replies->message_id }}" method="GET">
+            <div class="form-group">
+              <button type="submit" class="btn btn-warning btn-sm">Back</button>
+            </div>
+          </form>
 
 
         </div>

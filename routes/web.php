@@ -21,5 +21,6 @@ Route::delete('messages/{id?}', 'MessageController@destroy')->name('messages.des
 
 Route::get('replies/{id}', 'RepliesController@index')->name('replies.index');
 Route::post('replies/{id}', 'RepliesController@store')->name('replies.store');
-Route::get('replies/{id}/edit', 'RepliesController@edit')->name('replies.edit');
+Route::get('replies/{id?}/edit', 'RepliesController@edit')->name('replies.edit');
 Route::put('replies/{id?}', 'RepliesController@update')->name('replies.update');
+Route::delete('replies/{id?}', 'RepliesController@destroy')->name('replies.update');

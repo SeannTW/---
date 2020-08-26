@@ -47,7 +47,7 @@
             <div class="media mb-4">
               <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
                 <div class="media-body" style="display:inline;">
-                  <form action="{{ route('replies.edit', ['replies' => $replies]) }}" method="GET">
+                  <form action="{{ route('replies.edit', ['id' => $replies->id]) }}" method="GET">
                     @csrf
                     <button type="submit" style="float:right;">Edit</button>
                   </form>
