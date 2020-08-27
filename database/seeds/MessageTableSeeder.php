@@ -11,7 +11,7 @@ class MessageTableSeeder extends Seeder
      */
     public function run()
     {
-        $name = ['Jhon', 'Ben', 'Jacke', 'Alen', 'Nick'];
+        $name = ['Jhon', 'Ryan', 'Jack', 'Ellen', 'Leanna'];
         $content = ['大晴天今日天氣真好!', '天氣不穩定', '還好我有帶著雨傘'];
 
         for ($i = 0; $i < 5; $i ++) {

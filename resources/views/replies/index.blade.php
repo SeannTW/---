@@ -10,7 +10,7 @@
       <div class="card-body">
         <tr>
           <div class="media mb-1">
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+            <img class="d-flex mr-3 rounded-circle" src="/uploads/avatars/{{ $message->avatar }}" width="60"/>
             <div class="media-body">
               <h2 class="mt-0">{{ $message->name }}</h2>
               <p>{{ $message->content }}</p>

@@ -8,22 +8,28 @@
     <div class="card my-5">
       <h5 class="card-header">MessageBoard:</h5>
       <div class="card-body">
-        <form action="{{ route('messages.store') }}" method="POST">
+        <form action="{{ route('messages.store') }}" enctype="multipart/form-data" method="POST">
           @csrf
+          <div>
+            <label>
+              <input type="file" name="avatar">
+            </label>
+          </div>
           <div class="form-group">
             <input type="text" name="name" class="form-control" placeholder="Enter you name">
           </div>
           <div class="form-group">
             <textarea class="form-control" name="content" placeholder="Enter you content" rows="3"></textarea>
           </div>
-            <button type="submit" class="btn btn-primary">Save</button>
+          </br>
+          <button type="submit" class="btn btn-primary">Save</button>
         </form>
         </br>
         </br>
         @foreach ($messages as $message)
           <tr>
             <div class="media mb-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+              <img class="d-flex mr-3 rounded-circle" src="/uploads/avatars/{{ $message->avatar }}" width="60"/>
                 <div class="media-body">
                   <font size="1">
                     @if ($message->updated_at)

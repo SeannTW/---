@@ -6,6 +6,7 @@ use DB;
 use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Intervention\Image\Facades\Image;
 
 class MessageController extends Controller
 {
@@ -36,10 +37,17 @@ class MessageController extends Controller
             return new Response('No enter content');
         }
 
+        // 加入大頭照
+        $avatar = $request->file('avatar');
+        $filename = time() . '.' . $avatar->getClientOriginalExtension();
+        Image::make($avatar)->save(public_path('/uploads/avatars/' . $filename));
+
         $newMessage = new Message;
         $newMessage->name = $request->input('name');
         $newMessage->content = $request->input('content');
         $newMessage->updated_at = null;
+        $newMessage->avatar = $filename;
+
         $newMessage->save();
 
         return redirect(route('messages.index'));

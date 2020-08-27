@@ -43,7 +43,7 @@ class RepliesTableSeeder extends Seeder
             ];
         }
 
-        $name = ['Aelx', 'Paul', 'Ella'];
+        $name = ['Alex', 'Daisy', 'Ella'];
         $param = [$a, $b, $c];
         $content = collect($param);
 
