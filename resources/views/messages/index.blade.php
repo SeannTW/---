@@ -33,24 +33,19 @@
                 <div class="media-body">
                   <font size="1">
                     @if ($message->updated_at)
-                      <a>已編輯</a>
+                      <a>( 已編輯 )</a>
                     @endif
                   </font>
                   <div>
+                    <a href="messages/{{ $message->id }}/edit" class="btn btn-default btn-sm" style="float:right;">編輯留言</a>
                     <h2 class="mt-0" style="word-break: break-all;">{{ $message->name }}</h2>
-                  </div>
-                  <div>
-                    <a href="replies/{{ $message->id }}" class="btn btn-warning btn-sm" style="float:right;">Replies</a>
                   </div>
                     <h7>{{ $message->created_at }}</h7>
                   </br>
                   </br>
-                  <form action="{{ route('messages.destroy', $message->id) }}" method="POST">
-                    @method('DELETE')
-                    @csrf
-                    <button type="submit" class="btn btn-danger btn-sm" style="float:right; ">Delete</button>
-                  </form>
-                  <a href="messages/{{ $message->id }}/edit" class="btn btn-info btn-sm" style="float:right;">Edit</a>
+                  <div>
+                    <a href="replies/{{ $message->id }}" class="btn btn-info btn-sm" style="float:right;">回覆</a>
+                  </div>
                   <p style="word-break: break-all;">{{ $message->content }}</p>
                   <br/>
                 </div>

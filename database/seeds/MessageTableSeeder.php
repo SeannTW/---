@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Intervention\Image\Facades\Image;
 
 class MessageTableSeeder extends Seeder
 {
@@ -22,11 +23,16 @@ class MessageTableSeeder extends Seeder
             $newContent = $content[$param];
             $newDateTime = date("Y-m-d H:i:s", $dateParam);
 
+            $avatar = url('/uploads/avatars/default.jpg');
+            $filename = time() . '.' . 'jpg';
+            Image::make($avatar)->save(public_path('/uploads/avatars/' . $filename));
+
             $message = new App\Message;
             $message->name = $newName;
             $message->content = $newContent;
             $message->created_at = \Carbon\Carbon::parse($newDateTime)->timestamp;
-            $message->updated_at = \Carbon\Carbon::parse($newDateTime)->timestamp;
+            $message->updated_at = null;
+            $message->avatar = $filename;
             $message->save();
         }
     }

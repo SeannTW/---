@@ -37,16 +37,25 @@ class MessageController extends Controller
             return new Response('No enter content');
         }
 
-        // 加入大頭照
-        $avatar = $request->file('avatar');
-        $filename = time() . '.' . $avatar->getClientOriginalExtension();
-        Image::make($avatar)->save(public_path('/uploads/avatars/' . $filename));
-
         $newMessage = new Message;
         $newMessage->name = $request->input('name');
         $newMessage->content = $request->input('content');
         $newMessage->updated_at = null;
-        $newMessage->avatar = $filename;
+
+        // 加入大頭照
+        if (trim($request->avatar)) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->save(public_path('/uploads/avatars/' . $filename));
+
+            $newMessage->avatar = $filename;
+        } else {
+            $avatar = url('/uploads/avatars/default.jpg');
+            $filename = time() . '.' . 'jpg';
+            Image::make($avatar)->save(public_path('/uploads/avatars/' . $filename));
+
+            $newMessage->avatar = $filename;
+        }
 
         $newMessage->save();
 

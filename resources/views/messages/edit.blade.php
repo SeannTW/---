@@ -8,6 +8,11 @@
     <div class="card my-5">
       <h5 class="card-header">Edit message</h5>
       <div class="card-body">
+        <form action="{{ route('messages.destroy', $message->id) }}" method="POST">
+          @method('DELETE')
+          @csrf
+          <button type="submit" class="btn btn-danger btn-sm" style="float:right; ">刪除留言</button>
+        </form>
         <form action="{{ route('messages.update') }}" method="POST">
           @method('PUT')
           @csrf
@@ -16,10 +21,10 @@
             <h2 class="mt-0" style="word-break: break-all;">{{ $message->name }}</h2>
             <input type="textarea" name="content" class="form-control" rows="3" style="word-break: break-all;" value={{ $message->content }}>
           </div>
-          <button style="float:right;" type="submit" class="btn btn-info btn-sm">Update</button>
+          <button style="float:right;" type="submit" class="btn btn-info btn-sm">更新留言</button>
           <br/>
           <br/>
-          <a style="float:right;" href="/messages" class="btn btn-primary btn-sm">Back</a>
+          <a style="float:right;" href="/messages" class="btn btn-warning btn-sm">Back</a>
         </form>
       </div>
     </div>

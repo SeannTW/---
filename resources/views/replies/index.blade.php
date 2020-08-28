@@ -12,8 +12,8 @@
           <div class="media mb-1">
             <img class="d-flex mr-3 rounded-circle" src="/uploads/avatars/{{ $message->avatar }}" width="60"/>
             <div class="media-body">
-              <h2 class="mt-0">{{ $message->name }}</h2>
-              <p>{{ $message->content }}</p>
+              <h2 class="mt-0" style="word-break: break-all;">{{ $message->name }}</h2>
+              <p style="word-break: break-all;">{{ $message->content }}</p>
             </div>
           </div>
           <br/>
@@ -23,7 +23,7 @@
           <br/>
         </tr>
 
-        <h5 class="card-footer">Replies:</h5>
+        <h5 class="card-footer">Post replies:</h5>
         <form action="{{ route('replies.store', ['id' => $message->id]) }}" method="POST">
           @csrf
           <div class="form-group">
@@ -44,7 +44,7 @@
             <a>{{ $total }}則回覆</a>
           </font>
         @endif
-        <a href="/messages" class="btn btn-warning btn-sm" style="float:right;">Go Back</a>
+        <a href="/messages" class="btn btn-warning btn-sm" style="float:right;">Back</a>
         <br/>
         <br/>
         <br/>
@@ -52,20 +52,21 @@
         @foreach ($replies as $replies)
           <tr>
             <div class="media mb-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+              <img class="d-flex mr-3 rounded-circle" src="/uploads/avatars/default.jpg" width="45"/>
               <div class="media-body" style="display:inline;">
                 <form action="{{ route('replies.edit', ['id' => $replies->id]) }}" method="GET">
                   @csrf
-                  <button type="submit" style="float:right;">Edit</button>
+                  <button type="submit" style="float:right;">編輯</button>
                 </form>
                 <div>
-                  <font size="1">
+                  <h3 class="mt-0" style="word-break: break-all;">{{ $replies->name }}</h3>
+                  <p style="word-break: break-all;">{{ $replies->content }}</p>
+                  <font size="1" style="float:right;">
                     @if ($replies->updated_at)
-                      <a>已編輯</a>
+                      <a>( 已編輯 )</a>
                     @endif
                   </font>
-                  <h2 class="mt-0" style="word-break: break-all;">{{ $replies->name }}</h2>
-                  <p style="word-break: break-all;">{{ $replies->content }}</p>
+                  <br/>
                   <h7 style="float:right;">{{ $replies->created_at }}</h7>
                 </div>
                 <br/>

@@ -55,12 +55,11 @@ class RepliesTableSeeder extends Seeder
             $newDate = date("Y-m-d H:i:s", $dateParam);
 
             $replys = new Replies;
-
             $replys->name = $newName;
             $replys->content = $newContent['content'];
             $replys->message_id = $newContent['randMessage_id'];
             $replys->created_at = \Carbon\Carbon::parse($newDate)->timestamp;
-            $replys->updated_at = \Carbon\Carbon::parse($newDate)->timestamp;
+            $replys->updated_at = null;
             $replys->save();
         }
     }
