@@ -15,10 +15,34 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $messages = Message::all();
-        return view('messages.index', ['messages' => $messages]);
+        $data = DB::table('messages')
+                    ->orderBy('id', 'desc')
+                    ->get()
+                    ->toArray();
+
+        // 當前頁面
+        $pageNow = $request->get('page', 1);
+
+        // 總留言數
+        $totalDate = count($data);
+
+        // 每頁顯示幾筆資料
+        $pageLimit = 3;
+
+        // 總頁數
+        $totalPage = intval(ceil($totalDate / $pageLimit));
+
+        // 計算起始資料
+        $start = bcmul($pageLimit, bcsub($pageNow, 1));
+        $messages = array_slice($data, $start, $pageLimit);
+
+        return view('messages.index', [
+            'messages' => $messages,
+            'totalDate' => $totalDate,
+            'pageNow' => $pageNow,
+            'totalPage' => $totalPage]);
     }
 
     /**

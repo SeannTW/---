@@ -26,10 +26,12 @@
         </form>
         </br>
         </br>
+        <p>共 {{ $totalDate }} 筆留言</p>
+        <hr size="8px" align="center" width="100%">
         @foreach ($messages as $message)
           <tr>
             <div class="media mb-4">
-              <img class="d-flex mr-3 rounded-circle" src="/uploads/avatars/{{ $message->avatar }}" width="60"/>
+              <img class="d-flex mr-3 rounded-circle" src="http://localhost/Larave%20Project/Project-MessageBoard/public/uploads/avatars/{{ $message->avatar }}" width="60"/>
                 <div class="media-body">
                   <font size="1">
                     @if ($message->updated_at)
@@ -52,6 +54,19 @@
             </div>
           </tr>
         @endforeach
+        <div class="row justify-content-center">
+          <p>目前在第 {{ $pageNow }} 頁</p>
+        </div>
+        <div class="row justify-content-center">
+        @for ($i = 0; $i < $totalPage; $i++)
+          <form action="http://localhost/Larave%20Project/Project-MessageBoard/public/messages" method="GET">
+            <div class="form-group">
+              <input type="hidden" name="page" class="form-control" value={{ $i + 1 }}>
+              <button type="submit" class="btn btn-link">{{ $i + 1 }}</button>
+            </div>
+          </form>
+        @endfor
+        </div>
       </div>
     </div>
   </div>
