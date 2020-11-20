@@ -18,10 +18,10 @@ class MessageController extends Controller
     public function index(Request $request)
     {
         $data = DB::table('messages')
+                    ->where('deleted_at', '=', null)
                     ->orderBy('id', 'desc')
                     ->get()
                     ->toArray();
-
         // 當前頁面
         $pageNow = $request->get('page', 1);
 
@@ -74,7 +74,7 @@ class MessageController extends Controller
 
             $newMessage->avatar = $filename;
         } else {
-            $avatar = url('/uploads/avatars/default.jpg');
+            $avatar = url('images/default.jpg');
             $filename = time() . '.' . 'jpg';
             Image::make($avatar)->save(public_path('/uploads/avatars/' . $filename));
 

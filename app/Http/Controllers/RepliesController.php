@@ -124,6 +124,6 @@ class RepliesController extends Controller
 
         $deleteReplies->delete();
 
-        return redirect(route('replies.index', ['id' => $deleteReplies->message_id]));
+        return redirect()->back();
     }
 }

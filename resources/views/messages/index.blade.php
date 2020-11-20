@@ -31,7 +31,7 @@
         @foreach ($messages as $message)
           <tr>
             <div class="media mb-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://localhost/Larave%20Project/Project-MessageBoard/public/uploads/avatars/{{ $message->avatar }}" width="60"/>
+              <img class="d-flex mr-3 rounded-circle" src="http://127.0.0.1/jf/My%20Project/Project-MessageBoard/public/uploads/avatars/{{ $message->avatar }}" width="60"/>
                 <div class="media-body" style="border-radius:18px;background-color:#c9b6b6;">
                   <div style="margin:10px 20px -5px 20px">
                     <font size="1">
@@ -61,7 +61,7 @@
         </div>
         <div class="row justify-content-center">
         @for ($i = 0; $i < $totalPage; $i++)
-          <form action="http://localhost/Larave%20Project/Project-MessageBoard/public/messages" method="GET">
+          <form action="{{ route('messages.index') }}" method="GET">
             <div class="form-group">
               <input type="hidden" name="page" class="form-control" value={{ $i + 1 }}>
               <button type="submit" class="btn btn-link">{{ $i + 1 }}</button>

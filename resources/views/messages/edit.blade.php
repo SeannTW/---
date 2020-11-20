@@ -3,9 +3,9 @@
 @section('title', 'Message Board')
 
 @section('content')
-<div class="container">
+<div class="container" style="width:500px;">
   <div class="justify-content-center" style="width:500px;">
-    <div class="card my-5">
+    <div class="card my-5" style="background-color:#c2c2c2;">
       <h5 class="card-header">Edit message</h5>
       <div class="card-body">
         <form action="{{ route('messages.destroy', $message->id) }}" method="POST">
@@ -24,7 +24,7 @@
           <button style="float:right;" type="submit" class="btn btn-info btn-sm">更新留言</button>
           <br/>
           <br/>
-          <a style="float:right;" href="/messages" class="btn btn-warning btn-sm">Back</a>
+          <a style="float:right;" href="/jf/My%20Project/Project-MessageBoard/public/messages" class="btn btn-warning btn-sm">Back</a>
         </form>
       </div>
     </div>
