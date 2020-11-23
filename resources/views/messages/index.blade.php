@@ -21,6 +21,21 @@
           <div class="form-group">
             <textarea class="form-control" name="content" placeholder="Enter you content" rows="3"></textarea>
           </div>
+          <span class="error" role="alert">
+          @switch($errors)
+              @case($errors->has('name') && $errors->has('content'))
+                <strong>{{ $errors->first('name') }}</strong><br>
+                <strong>{{ $errors->first('content') }}</strong>
+                  @break
+              @case($errors->has('name'))
+                <strong>{{ $errors->first('name') }}</strong>
+                  @break
+              @case($errors->has('content'))
+                <strong>{{ $errors->first('content') }}</strong>
+                  @break
+              @default
+          @endswitch
+          </span>
           </br>
           <button type="submit" class="btn btn-primary">Save</button>
         </form>

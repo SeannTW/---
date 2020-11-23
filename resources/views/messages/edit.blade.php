@@ -21,6 +21,14 @@
             <h2 class="mt-0" style="word-break: break-all;">{{ $message->name }}</h2>
             <input type="textarea" name="content" class="form-control" rows="3" style="word-break: break-all;" value={{ $message->content }}>
           </div>
+          <span class="error" role="alert">
+            @switch($errors)
+                @case($errors->has('content'))
+                  <strong>{{ $errors->first('content') }}</strong>
+                    @break
+                @default
+            @endswitch
+            </span>
           <button style="float:right;" type="submit" class="btn btn-info btn-sm">更新留言</button>
           <br/>
           <br/>

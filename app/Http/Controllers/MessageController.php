@@ -18,7 +18,7 @@ class MessageController extends Controller
     public function index(Request $request)
     {
         $data = DB::table('messages')
-                    ->where('deleted_at', '=', null)
+                    ->where('deleted_at', '=', NULL)
                     ->orderBy('id', 'desc')
                     ->get()
                     ->toArray();
@@ -53,13 +53,11 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        if (trim($request->name) == '') {
-            return new Response('No enter name');
-        }
-
-        if (trim($request->content) == '') {
-            return new Response('No enter content');
-        }
+        $this->validate($request, [
+            'name' => 'required|min:1|max:20',
+            'content' => 'required|min:1|max:100',
+            'avatar' => 'image|mimes:jpeg,png,jpg|max:2048',
+        ]);
 
         $newMessage = new Message;
         $newMessage->name = $request->input('name');
@@ -112,9 +110,9 @@ class MessageController extends Controller
      */
     public function update(Request $request)
     {
-        if (trim($request->content) == '') {
-            return new Response('No enter content');
-        }
+        $this->validate($request, [
+            'content' => 'required|min:1|max:100',
+        ]);
 
         $updateMessage = Message::find($request->input('id'));
 
