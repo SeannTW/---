@@ -37,13 +37,10 @@ class RepliesController extends Controller
      */
     public function store(Request $request)
     {
-        if (trim($request->name) == '') {
-            return new Response('No enter name');
-        }
-
-        if (trim($request->content) == '') {
-            return new Response('No enter content');
-        }
+        $this->validate($request, [
+            'name' => 'required|min:1|max:20',
+            'content' => 'required|min:1|max:100',
+        ]);
 
         $newReplies = new Replies;
         $newReplies->name = $request->input('name');
@@ -91,10 +88,9 @@ class RepliesController extends Controller
      */
     public function update(Request $request)
     {
-
-        if (trim($request->content) == '') {
-            return new Response('No enter content');
-        }
+        $this->validate($request, [
+            'content' => 'required|min:1|max:100',
+        ]);
 
         $updateReplies = Replies::find($request->id);
 

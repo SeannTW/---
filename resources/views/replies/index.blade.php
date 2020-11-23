@@ -35,6 +35,21 @@
           <div class="form-group">
             <input hidden class="form-control" name="messageId" value={{ $message->id }}>
           </div>
+          <span class="error" role="alert">
+            @switch($errors)
+                @case($errors->has('name') && $errors->has('content'))
+                  <strong>{{ $errors->first('name') }}</strong><br>
+                  <strong>{{ $errors->first('content') }}</strong>
+                    @break
+                @case($errors->has('name'))
+                  <strong>{{ $errors->first('name') }}</strong>
+                    @break
+                @case($errors->has('content'))
+                  <strong>{{ $errors->first('content') }}</strong>
+                    @break
+                @default
+            @endswitch
+          </span>
           <button type="submit" class="btn btn-primary" style="float:right;">Save</button>
         </form>
         <br/>

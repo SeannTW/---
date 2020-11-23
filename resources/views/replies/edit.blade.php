@@ -38,6 +38,14 @@
             <input hidden type="text" name="id" class="form-control" value={{ $replies->id }}>
             <input type="textarea" name="content" class="form-control" rows="3" value={{ $replies->content }}>
             <br>
+            <span class="error" role="alert">
+            @switch($errors)
+                @case($errors->has('content'))
+                  <strong>{{ $errors->first('content') }}</strong>
+                    @break
+                @default
+            @endswitch
+            </span>
             <button type="submit" class="btn btn-info btn-sm" style="float:right;">更新回覆</button>
           </div>
         </form>
