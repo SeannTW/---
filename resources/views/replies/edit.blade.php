@@ -10,7 +10,7 @@
       <div class="card-body">
         <tr>
           <div class="media mb-4">
-            <img class="d-flex mr-3 rounded-circle" src="http://127.0.0.1/jf/My%20Project/Project-MessageBoard/public/uploads/avatars/{{ $message->avatar }}" width="60">
+            <img class="d-flex mr-3 rounded-circle" src="{{ asset('/uploads/avatars/' . $message->avatar) }}" width="60">
             <div class="media-body">
               <h2 class="mt-0" style="word-break: break-all;">{{ $message->name }}</h2>
               <p style="word-break: break-all;">{{ $message->content }}</p>
@@ -22,9 +22,8 @@
         <br/>
         <h5 class="card-footer">Edit your replies:</h5>
         <br/>
-
         <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://127.0.0.1/jf/My%20Project/Project-MessageBoard/public/uploads/avatars/default.jpg" width="45"/>
+          <img class="d-flex mr-3 rounded-circle" src="{{ asset('/images/default.jpg') }}" width="45"/>
           <div class="media-body">
             <h2 class="mt-0" style="word-break: break-all;">{{ $replies->name }}</h2>
             <p style="word-break: break-all;">{{ $replies->content }}</p>
@@ -50,7 +49,7 @@
           </div>
         </form>
         <br>
-        <form action="/jf/My%20Project/Project-MessageBoard/public/replies/{{ $replies->message_id }}" method="GET">
+        <form action="{{ route('replies.index', $replies->message_id) }}" method="GET">
           <div class="form-group">
             <button type="submit" class="btn btn-warning btn-sm" style="float:right;">Back</button>
           </div>

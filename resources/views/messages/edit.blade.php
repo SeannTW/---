@@ -32,7 +32,7 @@
           <button style="float:right;" type="submit" class="btn btn-info btn-sm">更新留言</button>
           <br/>
           <br/>
-          <a style="float:right;" href="/jf/My%20Project/Project-MessageBoard/public/messages" class="btn btn-warning btn-sm">Back</a>
+          <a style="float:right;" href="{{ route('messages.index') }}" class="btn btn-warning btn-sm">Back</a>
         </form>
       </div>
     </div>

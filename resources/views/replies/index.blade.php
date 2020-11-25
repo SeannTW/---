@@ -10,7 +10,7 @@
       <div class="card-body">
         <tr>
           <div class="media mb-1">
-            <img class="d-flex mr-3 rounded-circle" src="http://127.0.0.1/jf/My%20Project/Project-MessageBoard/public/uploads/avatars/{{ $message->avatar }}" width="60"/>
+            <img class="d-flex mr-3 rounded-circle" src="{{ asset('/uploads/avatars/' . $message->avatar) }}" width="60"/>
             <div class="media-body">
               <h2 class="mt-0" style="word-break: break-all;">{{ $message->name }}</h2>
               <p style="word-break: break-all;">{{ $message->content }}</p>
@@ -59,7 +59,7 @@
             <a>{{ $total }}則回覆</a>
           </font>
         @endif
-        <a href="/jf/My%20Project/Project-MessageBoard/public/messages" class="btn btn-warning btn-sm" style="float:right;">Back</a>
+        <a href="{{ route('messages.index') }}" class="btn btn-warning btn-sm" style="float:right;">Back</a>
         <br/>
         <br/>
         <br/>
@@ -67,7 +67,7 @@
         @foreach ($replies as $replies)
           <tr>
             <div class="media mb-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://127.0.0.1/jf/My%20Project/Project-MessageBoard/public/images/default.jpg" width="45"/>
+              <img class="d-flex mr-3 rounded-circle" src="{{ asset('/images/default.jpg') }}" width="45"/>
               <div class="media-body" style="display:inline;">
                 <form action="{{ route('replies.edit', ['id' => $replies->id]) }}" method="GET">
                   @csrf
