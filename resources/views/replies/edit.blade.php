@@ -23,7 +23,7 @@
         <h5 class="card-footer">Edit your replies:</h5>
         <br/>
         <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="{{ asset('/images/default.jpg') }}" width="45"/>
+          <img class="d-flex mr-3 rounded-circle" src="{{ asset('/uploads/avatars/default.jpg') }}" width="45"/>
           <div class="media-body">
             <h2 class="mt-0" style="word-break: break-all;">{{ $replies->name }}</h2>
             <p style="word-break: break-all;">{{ $replies->content }}</p>

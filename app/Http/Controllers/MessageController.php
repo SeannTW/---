@@ -72,7 +72,7 @@ class MessageController extends Controller
 
             $newMessage->avatar = $filename;
         } else {
-            $avatar = url('images/default.jpg');
+            $avatar = url('uploads/avatars/default.jpg');
             $filename = time() . '.' . 'jpg';
             Image::make($avatar)->save(public_path('/uploads/avatars/' . $filename));
 

@@ -67,7 +67,7 @@
         @foreach ($replies as $replies)
           <tr>
             <div class="media mb-4">
-              <img class="d-flex mr-3 rounded-circle" src="{{ asset('/images/default.jpg') }}" width="45"/>
+              <img class="d-flex mr-3 rounded-circle" src="{{ asset('/uploads/avatars/default.jpg') }}" width="45"/>
               <div class="media-body" style="display:inline;">
                 <form action="{{ route('replies.edit', ['id' => $replies->id]) }}" method="GET">
                   @csrf
