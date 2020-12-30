@@ -12,8 +12,10 @@ class RepliesController extends Controller
     /**
      * 顯示該留言的全部回覆內容
      *
-     * @param  \App\Replies
-     * @return \Illuminate\Http\Response
+     * @param  string $id 單筆留言id
+     * @return object $replies 單筆回覆內容
+     * @return object $message 單筆留言內容
+     * @return int $totalReplies 總回覆數量 
      */
     public function index($id)
     {
@@ -32,8 +34,8 @@ class RepliesController extends Controller
     /**
      * 新增回覆內容
      *
-     * @param  \Illuminate\Http\Request
-     * @return \Illuminate\Http\Response
+     * @param  Request $request 新增回覆內容
+     * @return void
      */
     public function store(Request $request)
     {
@@ -55,8 +57,9 @@ class RepliesController extends Controller
     /**
      * 編輯單筆回覆頁面
      *
-     * @param  \App\Replies
-     * @return \Illuminate\Http\Response
+     * @param  string $replies 單筆回覆id
+     * @return object $resultResult 單筆回覆內容
+     * @return object $resultMessage 單筆留言內容
      */
     public function edit($replies)
     {
@@ -82,9 +85,8 @@ class RepliesController extends Controller
     /**
      * 更新單筆回覆內容
      *
-     * @param  \Illuminate\Http\Request
-     * @param  \App\Replies
-     * @return \Illuminate\Http\Response
+     * @param  request $request 更新回覆內容
+     * @return int $updateReplies->message_id 單筆留言id
      */
     public function update(Request $request)
     {
@@ -107,8 +109,8 @@ class RepliesController extends Controller
     /**
      * 刪除單筆回覆
      *
-     * @param  \App\Replies
-     * @return \Illuminate\Http\Response
+     * @param  request $request 刪除回覆內容
+     * @return void
      */
     public function destroy(Request $request)
     {

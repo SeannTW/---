@@ -13,7 +13,7 @@ class MessageController extends Controller
     /**
      * 顯示所有留言
      *
-     * @return \Illuminate\Http\Response
+     * @return Array $messages 所有留言內容
      */
     public function index(Request $request)
     {
@@ -42,14 +42,15 @@ class MessageController extends Controller
             'messages' => $messages,
             'totalDate' => $totalDate,
             'pageNow' => $pageNow,
-            'totalPage' => $totalPage]);
+            'totalPage' => $totalPage
+        ]);
     }
 
     /**
      * 新增留言內容
      *
-     * @param  \Illuminate\Http\Request
-     * @return \Illuminate\Http\Response
+     * @param  Request $request 新增留言內容
+     * @return void
      */
     public function store(Request $request)
     {
@@ -87,11 +88,12 @@ class MessageController extends Controller
     /**
      * 編輯單筆留言頁面
      *
-     * @param  \App\Message
-     * @return \Illuminate\Http\Response
+     * @param  string $id 單筆留言id
+     * @return object $message 單筆留言物件 
      */
     public function edit($id)
     {
+        
         $message = Message::find($id);
 
         if (!$message) {
@@ -104,9 +106,8 @@ class MessageController extends Controller
     /**
      * 更新單筆留言內容
      *
-     * @param  \Illuminate\Http\Request
-     * @param  \App\Message
-     * @return \Illuminate\Http\Response
+     * @param  Request $request 更新留言內容
+     * @return void
      */
     public function update(Request $request)
     {
@@ -129,8 +130,8 @@ class MessageController extends Controller
     /**
      * 刪除單筆留言 & 如有回覆一併刪除
      *
-     * @param  \App\Message
-     * @return \Illuminate\Http\Response
+     * @param  Request $request 刪除留言內容
+     * @return void
      */
     public function destroy(Request $request)
     {
