@@ -57,6 +57,11 @@
                       <a href="messages/{{ $message->id }}/edit" class="btn btn-default btn-sm" style="float:right;">編輯留言</a>
                       <h2 class="mt-0" style="word-break: break-all;">{{ $message->name }}</h2>
                     </div>
+                    @if (!$message->replie_count == 0)
+                      <div style="float: right; transform:translate(0px,15px);">
+                        有{{ $message->replie_count }}則回覆
+                      </div>
+                    @endif
                       <h7>{{ $message->created_at }}</h7>
                     </br>
                     </br>

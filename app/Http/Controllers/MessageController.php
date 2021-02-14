@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Message;
+use App\Replies;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Intervention\Image\Facades\Image;
@@ -22,6 +23,16 @@ class MessageController extends Controller
                     ->orderBy('id', 'desc')
                     ->get()
                     ->toArray();
+
+        // 顯示該留言有幾筆回覆
+        foreach ($data as $key => $value) {
+            $messageId = DB::table('replies')
+                        ->where('message_id', '=', $value->id)
+                        ->get();
+            $resultCount = count($messageId);
+            $value->replie_count = $resultCount;
+        }
+
         // 當前頁面
         $pageNow = $request->get('page', 1);
 
