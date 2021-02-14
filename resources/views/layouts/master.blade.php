@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" style="background-color:#919191;">
   <head>
     @include('layouts.partials.header')
   </head>
-  <body bgcolor="#cccccc">
+  <body style="background-color:#919191;">
     @yield('content')
     @include('layouts.partials.footer')
   </body>

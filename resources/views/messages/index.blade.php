@@ -5,21 +5,20 @@
 @section('content')
 <div class="container" style="width:500px;">
   <div class="justify-content-center">
-    <div class="card my-5" style="background-color:#c2c2c2;border:3px #7e7e7e solid;border-radius:18px;">
+    <div class="card my-5" style="background-color:#c5c5c5;border:3px #7e7e7e solid;border-radius:18px;">
       <h5 class="card-header" >MessageBoard:</h5>
       <div class="card-body">
         <form action="{{ route('messages.store') }}" enctype="multipart/form-data" method="POST">
           @csrf
-          <div>
-            <label>
-              <input type="file" name="avatar">
-            </label>
+          <div class="form-group" style="float: left; width:78%">
+            <input type="text" name="name" class="form-control"  placeholder="Enter you name">
           </div>
+          <label class="btn btn-info" style="float: right;">
+            <input id="upload_img" style="display:none;" type="file" name="avatar">
+            <i class="fa fa-photo"></i>上傳照片
+          </label>
           <div class="form-group">
-            <input type="text" name="name" class="form-control" placeholder="Enter you name">
-          </div>
-          <div class="form-group">
-            <textarea class="form-control" name="content" placeholder="Enter you content" rows="3"></textarea>
+            <textarea class="form-control" name="content" placeholder="Enter you content" rows="3" minlength="1" maxlength="150"></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Save</button>
           <br>
